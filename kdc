@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -f ~/.kokua-debianrc ] ; then
+    . ~/.kokua-debianrc
+fi
+
+if [ -f Makefile -a -f Dockerfile ] ; then
+    make "${@}"
+else
+    make -C /usr/share/kokua-debian "${@}"
+fi
+
+exit $?
+
